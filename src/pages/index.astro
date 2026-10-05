@@ -16,8 +16,8 @@ const posts = (await getCollection('journal', ({ data }) => data.status === 'pub
 ---
 
 <BaseLayout
-  title="Samir — Cybersecurity, Software & Creative Engineering"
-  description="The personal workspace of Samir: cybersecurity, software engineering, research, interactive web experiments, and writing."
+  title={`${site.name} — Cybersecurity, Software & Creative Engineering`}
+  description={`The personal workspace of ${site.name}: cybersecurity, software engineering, research, interactive web experiments, and writing.`}
 >
   <main id="main-content" class="home-page">
     <section class="personal-hero">

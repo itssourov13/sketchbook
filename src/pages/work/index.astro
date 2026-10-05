@@ -2,13 +2,14 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCard from '../../components/Portfolio/ProjectCard.astro';
+import { site } from '../../data/site';
 import '../../components/Portfolio/portfolio.css';
 
 const projects = (await getCollection('projects', ({ data }) => data.status === 'published'))
   .sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title));
 ---
 
-<BaseLayout title="Work — Samir" description="Selected projects, experiments, and engineering work by Samir.">
+<BaseLayout title={`Work — ${site.name}`} description={`Selected projects, experiments, and engineering work by ${site.name}.`}>
   <main id="main-content" class="content-page">
     <section class="content-hero">
       <p class="eyebrow">Selected work</p>

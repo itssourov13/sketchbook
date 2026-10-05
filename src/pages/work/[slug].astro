@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
 
 export async function getStaticPaths() {
   const entries = await getCollection('projects', ({ data }) => data.status === 'published');
@@ -15,7 +16,7 @@ const previousProject = position > 0 ? allProjects[position - 1] : null;
 const nextProject = position >= 0 && position < allProjects.length - 1 ? allProjects[position + 1] : null;
 ---
 
-<BaseLayout title={`${entry.data.title} — Samir`} description={entry.data.description}>
+<BaseLayout title={`${entry.data.title} — ${site.name}`} description={entry.data.description}>
   <main id="main-content" class="case-page">
     <header class="case-hero">
       <a class="back-link" href="/work/">← All work</a>
@@ -37,7 +38,7 @@ const nextProject = position >= 0 && position < allProjects.length - 1 ? allProj
     {entry.id === 'sketchbook-engine' && (
       <aside class="source-credit" aria-label="Source credit">
         <span>Original reference</span>
-        <p>This interaction is based on the public ThreeUI “Meng To — Sketchbook” experience. ThreeUI remains credited in the project README and documentation.</p>
+        <p>This interaction is based on the public ThreeUI “Meng To — Sketchbook” experience. ThreeUI remains credited in the project README and documentation. The site does not present the original creator’s personal identity as the site owner.</p>
         <a href="https://threeui.com/landing-pages/meng-to-sketchbook.html" rel="noreferrer">View original reference ↗</a>
       </aside>
     )}

@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ReadingProgress from '../../components/Portfolio/ReadingProgress.astro';
 import ArticleCard from '../../components/Portfolio/ArticleCard.astro';
 import '../../components/Portfolio/portfolio.css';
+import { site } from '../../data/site';
 
 export async function getStaticPaths() {
   const entries = await getCollection('journal', ({ data }) => data.status === 'published');
@@ -19,7 +20,7 @@ const related = (await getCollection('journal', ({ data }) => data.status === 'p
   .slice(0, 2);
 ---
 
-<BaseLayout title={`${entry.data.title} — Journal — Samir`} description={entry.data.description}>
+<BaseLayout title={`${entry.data.title} — Journal — ${site.name}`} description={entry.data.description}>
   <ReadingProgress />
   <main id="main-content" class="article-page">
     <a class="back-link" href="/journal/">← Journal</a>

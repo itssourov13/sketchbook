@@ -3,12 +3,13 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/Portfolio/ArticleCard.astro';
 import '../../components/Portfolio/portfolio.css';
+import { site } from '../../data/site';
 
 const posts = (await getCollection('journal', ({ data }) => data.status === 'published')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const categories = [...new Set(posts.map((post) => post.data.category))];
 ---
 
-<BaseLayout title="Journal — Samir" description="Technical notes, design thinking, and build logs by Samir.">
+<BaseLayout title={`Journal — ${site.name}`} description={`Technical notes, design thinking, and build logs by ${site.name}.`}>
   <main id="main-content" class="content-page">
     <section class="content-hero">
       <p class="eyebrow">Journal</p>

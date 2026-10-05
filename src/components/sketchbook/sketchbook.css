@@ -39,44 +39,42 @@ button{font:inherit}
   background:linear-gradient(180deg,rgba(236,231,220,.25) 0%,rgba(236,231,220,.72) 58%,var(--paper) 88%);
 }
 
-/* ---------------- top bar ---------------- */
-.top{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  display:flex;flex-direction:column;align-items:center;gap:11px;
-  padding-inline:clamp(16px,4vw,48px);padding-block:18px 64px;pointer-events:none;text-align:center;
+/* Standalone experience header */
+.sketchbook-sitebar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 18px;
+  padding: 14px clamp(14px, 3vw, 30px);
+  border-bottom: 1px solid var(--hairline);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(16px) saturate(.98);
 }
-.top>*{pointer-events:auto}
-.top:before{
-  content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(180deg,rgba(240,236,226,.94),rgba(240,236,226,.7) 48%,rgba(240,236,226,0));
-  -webkit-backdrop-filter:blur(14px) saturate(.95);backdrop-filter:blur(14px) saturate(.95);
-  -webkit-mask-image:linear-gradient(180deg,#000 46%,transparent);
-  mask-image:linear-gradient(180deg,#000 46%,transparent);
+.sketchbook-back, .sketchbook-site-work {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 12px;
 }
-.top .name{
-  font-family:var(--display);font-size:clamp(24px,2.4vw,30px);letter-spacing:.01em;
-  white-space:nowrap;line-height:1;
-}
-.top nav{
-  display:flex;gap:clamp(14px,2vw,26px);font-size:15px;align-items:center;
-  letter-spacing:var(--track-nav);font-weight:300;
-}
-.top nav a{color:var(--ink-soft);transition:color .2s}
-.top nav a:hover,.top nav a[aria-current]{color:var(--ink)}
-.top nav .top-socials{
-  display:flex;align-items:center;gap:13px;margin-left:2px;padding-left:clamp(12px,1.6vw,20px);
-  border-left:1px solid var(--hairline);
-}
-.icon-btn{display:inline-flex;align-items:center;justify-content:center;padding:4px;color:var(--ink-soft);transition:color .2s}
-.icon-btn:hover{color:var(--ink)}
-.top .icon-btn svg{width:16px;height:16px;display:block}
-@media (max-width:640px){
-  .top{padding-inline:12px;padding-block:13px 50px;gap:8px}
-  .top .name{font-size:20px}
-  .top nav{gap:11px;font-size:13px}
-  .top nav .top-socials{gap:9px;padding-left:10px}
-  .top .icon-btn{padding:2px}
-  .top .icon-btn svg{width:14px;height:14px}
+.sketchbook-site-work { justify-self: end; }
+.sketchbook-back:hover, .sketchbook-site-work:hover { color: var(--ink); background: rgba(43,39,33,.045); }
+.sketchbook-site-title { font: 400 23px/1 var(--display); color: var(--ink); }
+
+@media (max-width: 640px) {
+  .sketchbook-sitebar { grid-template-columns: 1fr auto; gap: 10px; padding: 9px 10px; }
+  .sketchbook-site-title { font-size: 20px; }
+  .sketchbook-site-work { display: none; }
+  .sketchbook-back { min-height: 30px; padding-inline: 9px; font-size: 11px; }
 }
 
 /* ---------------- hero ---------------- */

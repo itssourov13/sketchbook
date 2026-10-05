@@ -1,5 +1,5 @@
 export const site = {
-  name: 'Samir',
+  name: 'Sourov',
   location: 'Bangladesh',
   role: 'Cybersecurity · Software · Creative Engineering',
   shortBio: 'Security-minded engineer exploring systems, software, research, and the expressive side of the web.',

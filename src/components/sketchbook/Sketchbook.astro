@@ -6,26 +6,22 @@ interface Props {
   kicker?: string;
 }
 
-const { mode = 'full', kicker = 'Designer / Creator / AI Educator / Founder @ Singapore' } = Astro.props;
+const { mode = 'full', kicker = 'Interactive sketchbook / visual archive' } = Astro.props;
 ---
 
 <div class="wash" aria-hidden="true"></div>
 <main class:list={['page', 'home', { 'sketchbook-hero-only': mode === 'hero' } ]} data-mode={mode}>
 
-  <header class="top">
-    <a class="name" href="#">Meng To</a>
-    <nav>
-      <a href="#plates">Journal</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <div class="top-socials">
-        <a href="#" class="icon-btn" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.7 2.6h3.3l-7.2 8.2 8.5 11.2h-6.7l-5.2-6.9-6 6.9H1.1l7.7-8.8L.7 2.6h6.9l4.7 6.3 5.4-6.3Zm-1.2 17.5h1.8L7.6 4.4H5.7l10.8 15.7Z"/></svg></a>
-        <a href="#" class="icon-btn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.9 3.5a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2ZM3.1 9.3h3.6v11.6H3.1V9.3Zm6 0h3.4v1.6h.05c.48-.9 1.65-1.85 3.4-1.85 3.63 0 4.3 2.35 4.3 5.4v6.45h-3.6v-5.72c0-1.36-.02-3.12-1.92-3.12-1.92 0-2.22 1.48-2.22 3.02v5.82H9.1V9.3Z"/></svg></a>
-        <a href="#" class="icon-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.6" cy="6.4" r="1.15" fill="currentColor" stroke="none"/></svg></a>
-        <a href="#contact" class="icon-btn" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2.4" y="4.6" width="19.2" height="14.8" rx="2.4"/><path d="m3.2 6.4 8.8 6.6 8.8-6.6"/></svg></a>
-      </div>
-    </nav>
-  </header>
+  {mode === 'full' && (
+    <header class="sketchbook-sitebar" aria-label="Sketchbook navigation">
+      <a class="sketchbook-back" href="/" aria-label="Back to Sourov home">
+        <span aria-hidden="true">←</span>
+        <span>Sourov</span>
+      </a>
+      <span class="sketchbook-site-title">Sketchbook</span>
+      <a class="sketchbook-site-work" href="/work/">Work <span aria-hidden="true">↗</span></a>
+    </header>
+  )}
 
   <section id="sketchbook" class="hero">
     <img crossorigin="anonymous" class="botany l" src="/assets/botany-left.png" alt="" aria-hidden="true">
@@ -80,7 +76,7 @@ const { mode = 'full', kicker = 'Designer / Creator / AI Educator / Founder @ Si
   <section id="about" class="about">
     <div>
       <p class="section-label">About</p>
-      <p class="bio">Meng To is a designer, creator, and AI educator based in Singapore. He is the founder of <a class="bio-link" href="#">Design+Code</a>, where for over a decade he has taught designers and developers to build real apps — from Sketch and Xcode through SwiftUI, and now the AI tools that let one person ship what used to take a team. His work lives on the seam between craft and code: teaching designers to build, and builders to see. This sketchbook is the other half of that — the city looked at slowly, in <a class="bio-link" href="#">ink and a little colour</a>: shophouse shutters, hawker tents, the bay at dusk.</p>
+      <p class="bio">A tactile visual archive built around paper, motion, and close observation. The Sketchbook interaction is preserved as a signature portfolio experience, then separated from the rest of the site so the same system can evolve into project showcases, research notes, and future visual experiments.</p>
     </div>
     <img crossorigin="anonymous" class="bloom" src="/assets/bloom.png" alt="" aria-hidden="true">
   </section>
@@ -93,7 +89,7 @@ const { mode = 'full', kicker = 'Designer / Creator / AI Educator / Founder @ Si
   </section>
 
   <div class="rule short" aria-hidden="true"></div>
-  <p class="foot" id="contact">Singapore · Sketchbook · <a href="#" class="bio-link">hello@mengto.com</a></p>
+  <p class="foot" id="contact">Sourov · Interactive Sketchbook · <a href="/" class="bio-link">Back to home</a> · Original reference: ThreeUI / Meng To</p>
 </main>
 
 <script>
