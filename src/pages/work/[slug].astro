@@ -9,6 +9,10 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const allProjects = (await getCollection('projects', ({ data }) => data.status === 'published')).sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title));
+const position = allProjects.findIndex((item) => item.id === entry.id);
+const previousProject = position > 0 ? allProjects[position - 1] : null;
+const nextProject = position >= 0 && position < allProjects.length - 1 ? allProjects[position + 1] : null;
 ---
 
 <BaseLayout title={`${entry.data.title} — Samir`} description={entry.data.description}>
@@ -29,6 +33,19 @@ const { Content } = await render(entry);
     <article class="rich-content">
       <Content />
     </article>
+
+    {entry.id === 'sketchbook-engine' && (
+      <aside class="source-credit" aria-label="Source credit">
+        <span>Original reference</span>
+        <p>This interaction is based on the public ThreeUI “Meng To — Sketchbook” experience. ThreeUI remains credited in the project README and documentation.</p>
+        <a href="https://threeui.com/landing-pages/meng-to-sketchbook.html" rel="noreferrer">View original reference ↗</a>
+      </aside>
+    )}
+
+    <nav class="project-pager" aria-label="Project navigation">
+      {previousProject ? <a href={`/work/${previousProject.id}/`}><span>Previous</span><strong>{previousProject.data.title}</strong></a> : <span></span>}
+      {nextProject ? <a class="next" href={`/work/${nextProject.id}/`}><span>Next</span><strong>{nextProject.data.title}</strong></a> : <span></span>}
+    </nav>
   </main>
 </BaseLayout>
 
@@ -48,5 +65,15 @@ const { Content } = await render(entry);
 .rich-content :global(h2) { margin: 3em 0 1rem; font: 400 clamp(34px,5vw,54px)/1 var(--display); }
 .rich-content :global(p) { margin: 0 0 1.35em; }
 .rich-content :global(a) { color: inherit; }
+.source-credit { max-width: 68ch; margin: 70px auto 0; padding: 18px 0; border-block: 1px solid var(--hairline); }
+.source-credit span { color: var(--ink-faint); font-size: 10px; letter-spacing:.13em; text-transform:uppercase; }
+.source-credit p { margin: 12px 0; color: var(--ink-soft); line-height:1.6; }
+.source-credit a { color:var(--ink); font-size:13px; }
+.project-pager { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:70px; }
+.project-pager a { display:grid; gap:5px; min-height:90px; padding:18px; border:1px solid var(--hairline); color:inherit; text-decoration:none; }
+.project-pager a:hover { background:rgba(43,39,33,.035); }
+.project-pager .next { text-align:right; }
+.project-pager span { color:var(--ink-faint); font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
+.project-pager strong { font:400 28px/.95 var(--display); }
 @media (max-width:700px) { .case-meta { grid-template-columns: 1fr; } }
 </style>

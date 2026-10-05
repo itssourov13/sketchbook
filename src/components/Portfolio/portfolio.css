@@ -10,6 +10,8 @@
 .project-card-meta { display: flex; justify-content: space-between; gap: 12px; color: var(--ink-faint); font-size: 11px; text-transform: uppercase; letter-spacing: .11em; }
 .project-card-body h2 { max-width: 14ch; margin: 12px 0 10px; font: 400 clamp(32px, 4vw, 54px)/.92 var(--display); letter-spacing: -.02em; }
 .project-card-body p { max-width: 48ch; margin: 0; color: var(--ink-soft); font-size: 16px; line-height: 1.55; }
+.project-card-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:18px; padding-right:36px; }
+.project-card-tags span { padding:5px 8px; border:1px solid var(--hairline); border-radius:999px; color:var(--ink-faint); font-size:10px; letter-spacing:.04em; }
 .project-card-arrow { position: absolute; right: 2px; bottom: 18px; font-size: 20px; }
 .article-grid { display: grid; gap: 12px; }
 .article-card { border-top: 1px solid var(--hairline); }
