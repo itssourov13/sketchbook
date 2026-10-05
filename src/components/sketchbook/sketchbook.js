@@ -1,5 +1,5 @@
 // @ts-nocheck
-function __threeuiStorageImage(...args){const image=new Image(...args);const property=Object.getOwnPropertyDescriptor(HTMLImageElement.prototype,"src");Object.defineProperty(image,"src",{configurable:true,get(){return property.get.call(this)},set(value){try{const url=new URL(value,document.baseURI);if(this.crossOrigin===null&&(url.href.startsWith("https://ublctyddhtbgaersvxxb.supabase.co/storage/v1/object/public/threeui-media/scene-images/")||url.origin===new URL(document.baseURI).origin))this.crossOrigin="anonymous"}catch{}property.set.call(this,value)}});return image;}
+function __threeuiStorageImage(...args){return new Image(...args)}
 
 // @ts-nocheck
 /* =====================================================================
@@ -514,13 +514,24 @@ function startIntro(){
 (async function boot(){
   idx=Q.has('shot')?(parseInt(Q.get('shot'),10)||0)%M:0;
   paint();applyView();
-  await Promise.all(PAGES.map(p=>{
-    const im=new __threeuiStorageImage();im.src=p.url;
-    return im.decode?im.decode().catch(()=>{}):new Promise(r=>{im.onload=im.onerror=r});
-  }));
+  const mode=document.querySelector('.page.home')?.dataset.mode||'full';
+  const preload=async indices=>{
+    await Promise.all(indices.map(i=>{
+      const p=PAGES[(i+M)%M];
+      const im=new __threeuiStorageImage();im.src=p.url;
+      return im.decode?im.decode().catch(()=>{}):new Promise(r=>{im.onload=im.onerror=r});
+    }));
+  };
+  const initialIndices=mode==='hero'?[idx,(idx+1)%M,(idx-1+M)%M]:PAGES.map((_,i)=>i);
+  await preload(initialIndices);
   if(document.fonts&&document.fonts.ready)await document.fonts.ready.catch(()=>{});
   syncZoom();restLoupe();
   document.body.dataset.ready='1';
+  if(mode==='hero'&&initialIndices.length<M){
+    const warmRemaining=()=>preload(PAGES.map((_,i)=>i).filter(i=>!initialIndices.includes(i)));
+    if('requestIdleCallback' in window) requestIdleCallback(()=>{void warmRemaining()},{timeout:1800});
+    else setTimeout(()=>{void warmRemaining()},500);
+  }
   if(Q.has('shot')){
     if(Q.has('t')){startTurn(Q.get('dir')||'next',parseFloat(Q.get('t')));}
     return;
