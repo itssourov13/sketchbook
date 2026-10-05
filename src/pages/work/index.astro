@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/Portfolio/ProjectCard.astro';
+import { site } from '../../data/site';
+import '../../components/Portfolio/portfolio.css';
+
+const projects = (await getCollection('projects', ({ data }) => data.status === 'published'))
+  .sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title));
+---
+
+<BaseLayout title={`Work — ${site.name}`} description={`Selected projects, experiments, and engineering work by ${site.name}.`}>
+  <main id="main-content" class="content-page">
+    <section class="content-hero">
+      <p class="eyebrow">Selected work</p>
+      <h1>Things I build<br /><em>and keep learning from.</em></h1>
+      <p class="content-intro">A growing collection of interactive web experiments, engineering systems, and projects where design meets code.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="work-list-title">
+      <div class="section-heading"><p class="eyebrow">01 / Projects</p><h2 id="work-list-title">Work</h2></div>
+      <div class="work-grid">
+        {projects.map((project) => <ProjectCard {...project.data} href={`/work/${project.id}/`} />)}
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+.content-page { max-width: 1180px; margin: 0 auto; padding: 130px clamp(20px,5vw,48px) 80px; }
+.content-hero { max-width: 900px; padding: 90px 0 110px; }
+.eyebrow { margin: 0 0 18px; color: var(--ink-faint); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+.content-hero h1 { margin: 0; font: 400 clamp(58px, 10vw, 132px)/.86 var(--display); letter-spacing: -.035em; }
+.content-hero h1 em { color: var(--earth); }
+.content-intro { max-width: 54ch; margin: 28px 0 0; color: var(--ink-soft); font-size: clamp(17px,2vw,22px); line-height: 1.55; }
+.content-section { padding: 0 0 100px; }
+.section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin-bottom: 28px; border-top: 1px solid var(--hairline); padding-top: 18px; }
+.section-heading h2 { margin: 0; font: 400 clamp(34px,4vw,58px)/1 var(--display); }
+</style>

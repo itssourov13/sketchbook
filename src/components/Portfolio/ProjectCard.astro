@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  year: number;
+  type: string;
+  href: string;
+  image?: string | undefined;
+  featured?: boolean;
+  stack?: string[];
+}
+const { title, description, year, type, href, image, featured = false, stack = [] } = Astro.props;
+---
+
+<article class:list={["project-card", { featured }]}>
+  <a class="project-card-link" href={href} aria-label={`Open ${title} project`}>
+    <div class="project-card-media" aria-hidden="true">
+      {image ? <img src={image} alt={title} loading="lazy" decoding="async" /> : <div class="project-card-placeholder"></div>}
+      <span class="project-card-index">{String(year).slice(-2)}</span>
+    </div>
+    <div class="project-card-body">
+      <div class="project-card-meta"><span>{type}</span><span>{year}</span></div>
+      <h2>{title}</h2>
+      <p>{description}</p>
+      {stack.length > 0 && <div class="project-card-tags">{stack.slice(0, 4).map((item) => <span>{item}</span>)}</div>}
+      <span class="project-card-arrow" aria-hidden="true">↗</span>
+    </div>
+  </a>
+</article>

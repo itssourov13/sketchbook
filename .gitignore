@@ -1,4 +1,5 @@
 node_modules/
 dist/
+.astro/
 .vite/
 .DS_Store
