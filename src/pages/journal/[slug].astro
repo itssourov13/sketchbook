@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('journal', ({ data }) => data.status === 'published');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const published = entry.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout title={`${entry.data.title} — Journal — Samir`} description={entry.data.description}>
+  <main id="main-content" class="article-page">
+    <a class="back-link" href="/journal/">← Journal</a>
+    <header class="article-header">
+      <p class="eyebrow">{entry.data.category} · {published}{entry.data.readingTime ? ` · ${entry.data.readingTime}` : ''}</p>
+      <h1>{entry.data.title}</h1>
+      <p class="article-deck">{entry.data.description}</p>
+      {entry.data.cover && <img class="article-cover" src={entry.data.cover} alt="" decoding="async" />}
+    </header>
+    <article class="rich-content"><Content /></article>
+  </main>
+</BaseLayout>
+
+<style>
+.article-page { max-width: 1000px; margin: 0 auto; padding: 130px clamp(20px,5vw,48px) 120px; }
+.back-link { color: var(--ink-soft); text-decoration: none; font-size: 13px; }
+.back-link:hover { color: var(--ink); }
+.article-header { padding: 90px 0 80px; }
+.eyebrow { margin: 0 0 20px; color: var(--ink-faint); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; }
+.article-header h1 { max-width: 12ch; margin: 0; font: 400 clamp(56px, 9vw, 116px)/.88 var(--display); letter-spacing: -.035em; }
+.article-deck { max-width: 56ch; margin: 28px 0 0; color: var(--ink-soft); font-size: clamp(18px,2vw,24px); line-height: 1.52; }
+.article-cover { width: 100%; max-height: 620px; object-fit: cover; display: block; margin-top: 64px; border: 1px solid var(--hairline); }
+.rich-content { max-width: 68ch; margin: 0 auto; font-size: 19px; line-height: 1.85; }
+.rich-content :global(h2) { margin: 3.2em 0 1rem; font: 400 clamp(34px,5vw,54px)/1 var(--display); }
+.rich-content :global(p) { margin: 0 0 1.45em; }
+.rich-content :global(strong) { font-weight: 600; }
+</style>

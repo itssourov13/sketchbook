@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  category: string;
+  href: string;
+  readingTime?: string | undefined;
+  cover?: string | undefined;
+}
+const { title, description, pubDate, category, href, readingTime, cover } = Astro.props;
+---
+
+<article class="article-card">
+  <a href={href} class="article-card-link">
+    <div class="article-card-date">{pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</div>
+    {cover && <img class="article-card-cover" src={cover} alt="" loading="lazy" decoding="async" />}
+    <div class="article-card-body">
+      <p class="article-card-category">{category}{readingTime ? ` · ${readingTime}` : ''}</p>
+      <h2>{title}</h2>
+      <p>{description}</p>
+      <span class="article-card-arrow" aria-hidden="true">Read ↗</span>
+    </div>
+  </a>
+</article>
