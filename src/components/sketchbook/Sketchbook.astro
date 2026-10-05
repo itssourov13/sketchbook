@@ -1,9 +1,16 @@
 ---
 import './sketchbook.css';
+
+interface Props {
+  mode?: 'full' | 'hero';
+  kicker?: string;
+}
+
+const { mode = 'full', kicker = 'Designer / Creator / AI Educator / Founder @ Singapore' } = Astro.props;
 ---
 
 <div class="wash" aria-hidden="true"></div>
-<main class="page home">
+<main class:list={['page', 'home', { 'sketchbook-hero-only': mode === 'hero' } ]}>
 
   <header class="top">
     <a class="name" href="#">Meng To</a>
@@ -24,7 +31,7 @@ import './sketchbook.css';
     <img crossorigin="anonymous" class="botany l" src="/assets/botany-left.png" alt="" aria-hidden="true">
     <img crossorigin="anonymous" class="botany r" src="/assets/botany-right.png" alt="" aria-hidden="true">
 
-    <p class="hero-kicker">Designer / Creator / AI Educator / Founder @ Singapore</p>
+    <p class="hero-kicker">{kicker}</p>
 
     <div class="sb-wrap" id="sbWrap">
       <svg width="0" height="0" style="position:absolute" aria-hidden="true">

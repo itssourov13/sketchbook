@@ -329,9 +329,13 @@ addEventListener('keydown',e=>{
   e.preventDefault();hideHint();
   step(e.key==='ArrowRight'?'next':'prev');
 });
-document.getElementById('heroDown').onclick=()=>{
-  document.getElementById('about').scrollIntoView({behavior:'smooth',block:'start'});
-};
+const heroDown=document.getElementById('heroDown');
+const aboutSection=document.getElementById('about');
+if(heroDown&&aboutSection){
+  heroDown.onclick=()=>aboutSection.scrollIntoView({behavior:'smooth',block:'start'});
+}else if(heroDown){
+  heroDown.remove();
+}
 
 /* --------------------------------------------------- loupe + controls */
 const loupe=document.getElementById('loupe');
