@@ -35,5 +35,7 @@ for (const forbidden of ['>Meng To<', 'hello@mengto.com', 'Meng To is a designer
 if (!home.includes('SOUROV')) throw new Error('Sourov branding missing from Home.');
 if (!sketchbook.includes('Back to Sourov home')) throw new Error('Sketchbook back navigation missing.');
 if (!sketchbook.includes('href="/"')) throw new Error('Sketchbook Home destination missing.');
+if (!sketchbook.includes('class="sketchbook-site-work"')) throw new Error('Sketchbook Work link missing.');
+if (!sketchbook.includes('class="bio-link"')) throw new Error('Sketchbook Back-to-home footer link missing.');
 
 console.log(`Navigation smoke test passed: ${requiredFiles.length} required build artifacts, ${requiredHomeLinks.length} Home routes, no legacy personal header.`);
