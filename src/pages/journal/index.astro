@@ -4,8 +4,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/Portfolio/ArticleCard.astro';
 import '../../components/Portfolio/portfolio.css';
 
-const posts = (await getCollection('journal', ({ data }) => data.status === 'published'))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = (await getCollection('journal', ({ data }) => data.status === 'published')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const categories = [...new Set(posts.map((post) => post.data.category))];
 ---
 
 <BaseLayout title="Journal — Samir" description="Technical notes, design thinking, and build logs by Samir.">
@@ -15,6 +15,8 @@ const posts = (await getCollection('journal', ({ data }) => data.status === 'pub
       <h1>Notes from the<br /><em>workbench.</em></h1>
       <p class="content-intro">Technical notes, design decisions, experiments, and lessons from building things that live between code and craft.</p>
     </section>
+
+    <section class="journal-categories" aria-label="Journal categories">{categories.map((category) => <span>{category}</span>)}</section>
 
     <section class="content-section" aria-labelledby="journal-list-title">
       <div class="section-heading"><p class="eyebrow">02 / Writing</p><h2 id="journal-list-title">Latest</h2></div>
@@ -35,4 +37,6 @@ const posts = (await getCollection('journal', ({ data }) => data.status === 'pub
 .content-section { padding: 0 0 100px; }
 .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin-bottom: 28px; border-top: 1px solid var(--hairline); padding-top: 18px; }
 .section-heading h2 { margin: 0; font: 400 clamp(34px,4vw,58px)/1 var(--display); }
+.journal-categories { display:flex; flex-wrap:wrap; gap:7px; padding-bottom:32px; }
+.journal-categories span { padding:7px 10px; border:1px solid var(--hairline); border-radius:999px; color:var(--ink-soft); font-size:11px; }
 </style>

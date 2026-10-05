@@ -1,6 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReadingProgress from '../../components/Portfolio/ReadingProgress.astro';
+import ArticleCard from '../../components/Portfolio/ArticleCard.astro';
+import '../../components/Portfolio/portfolio.css';
 
 export async function getStaticPaths() {
   const entries = await getCollection('journal', ({ data }) => data.status === 'published');
@@ -10,9 +13,14 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const published = entry.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const related = (await getCollection('journal', ({ data }) => data.status === 'published'))
+  .filter((item) => item.id !== entry.id)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 2);
 ---
 
 <BaseLayout title={`${entry.data.title} — Journal — Samir`} description={entry.data.description}>
+  <ReadingProgress />
   <main id="main-content" class="article-page">
     <a class="back-link" href="/journal/">← Journal</a>
     <header class="article-header">
@@ -22,6 +30,15 @@ const published = entry.data.pubDate.toLocaleDateString('en-US', { year: 'numeri
       {entry.data.cover && <img class="article-cover" src={entry.data.cover} alt="" decoding="async" />}
     </header>
     <article class="rich-content"><Content /></article>
+
+    {related.length > 0 && (
+      <section class="related-section" aria-labelledby="related-title">
+        <div class="section-heading"><div><p class="eyebrow">Keep reading</p><h2 id="related-title">Related notes</h2></div></div>
+        <div class="article-grid">
+          {related.map((post) => <ArticleCard {...post.data} href={`/journal/${post.id}/`} />)}
+        </div>
+      </section>
+    )}
   </main>
 </BaseLayout>
 
@@ -38,4 +55,6 @@ const published = entry.data.pubDate.toLocaleDateString('en-US', { year: 'numeri
 .rich-content :global(h2) { margin: 3.2em 0 1rem; font: 400 clamp(34px,5vw,54px)/1 var(--display); }
 .rich-content :global(p) { margin: 0 0 1.45em; }
 .rich-content :global(strong) { font-weight: 600; }
+.related-section { max-width: 1000px; margin-top: 100px; padding-top: 12px; border-top:1px solid var(--hairline); }
+.related-section .section-heading { margin-top:0; }
 </style>
