@@ -1,8 +1,10 @@
-# Sketchbook — Interactive Landing Page
+# Sketchbook — Personal Portfolio / Journal Foundation
 
-A verified standalone workspace for the **Meng To — Sketchbook** landing-page experience, prepared as the clean baseline for future customization and upgrades.
+A personal website foundation built around an interactive, tactile sketchbook experience.
 
-The current version intentionally keeps the original visual language and interaction model intact. Future work can build on this baseline without first having to reconstruct the source or assets.
+The original **Meng To — Sketchbook** interaction from ThreeUI is preserved as the signature visual experience, but the project is no longer just a landing page. It now has a scalable Astro architecture for personal identity, portfolio projects, case studies, journal posts, SEO, and future interactive experiments.
+
+> **Let the interaction create the first impression. Let the content carry the story.**
 
 ---
 
@@ -17,7 +19,10 @@ The current version intentionally keeps the original visual language and interac
 - Interactive **nine-plate index**
 - Responsive desktop/mobile layout
 - Localized assets for a **self-contained runtime**
-- Vite-based development and production build workflow
+- Astro + TypeScript development and production build workflow
+- Typed Markdown content collections for projects and journal posts
+- Static output with RSS and sitemap generation
+- SEO-ready canonical and Open Graph metadata
 
 ### Included Sketchbook Plates
 
@@ -37,17 +42,24 @@ The current version intentionally keeps the original visual language and interac
 
 ```text
 sketchbook/
-├── index.html                 # Main standalone landing page
+├── astro.config.mjs          # Astro + sitemap configuration
 ├── public/
 │   └── assets/                # Local images + fonts
-├── package.json               # Vite scripts and project metadata
+├── src/
+│   ├── components/            # Navigation, portfolio, journal, Sketchbook
+│   ├── data/                  # Site config + Markdown content
+│   ├── layouts/               # Shared page shell
+│   ├── pages/                 # Home, Work, Journal, About, Sketchbook, RSS
+│   ├── styles/                # Design tokens + global styles
+│   └── content.config.ts      # Typed content collections
+├── package.json
 ├── package-lock.json
+├── tsconfig.json
 ├── README.md
-├── .gitignore
 └── dist/                      # Generated build output (git-ignored)
 ```
 
-The implementation is deliberately kept lightweight: the current experience is delivered from a single HTML document with its required local assets.
+The implementation is mostly static by design. The Sketchbook interaction is isolated as a reusable component while projects and journal entries are content-driven.
 
 ---
 
@@ -70,12 +82,42 @@ npm install
 npm run dev
 ```
 
-Vite will print the local URL in the terminal.
+Astro will print the local URL in the terminal.
 
 ### Production build
 
 ```bash
 npm run build
+```
+
+### Preview the production build
+
+```bash
+npm run preview
+```
+
+### Production URL
+
+Set `PUBLIC_SITE_URL` for deployment:
+
+```bash
+PUBLIC_SITE_URL=https://your-domain.example
+```
+
+The value is used for canonical URLs, Open Graph URLs, RSS links, and the generated sitemap. Until a real domain is configured, the build falls back to `https://example.com`.
+
+### Main routes
+
+```text
+/
+/about/
+/work/
+/work/<project>/
+/journal/
+/journal/<article>/
+/sketchbook/
+/rss.xml
+/sitemap-index.xml
 ```
 
 ---
@@ -108,22 +150,25 @@ Runtime asset references were then localized to `/assets/*`, so the page does no
 
 ---
 
-## 🎛️ Current Baseline
+## 🎛️ Current Architecture
 
-This repository is intentionally kept close to the verified source implementation.
+The original interaction has been separated from the application shell so the same Sketchbook experience can be reused as a homepage hero or a dedicated `/sketchbook/` page.
 
-That gives us a stable starting point for the next phase, where we can progressively add our own:
+The site now has:
 
-- content and branding
-- typography changes
-- animations and transitions
-- section redesigns
-- UX improvements
-- performance optimizations
-- responsive refinements
-- new interactions and visual effects
+- personal Home page
+- Work index + dynamic case studies
+- Journal index + dynamic articles
+- About page
+- reusable navigation and footer
+- typed project/journal content collections
+- RSS feed
+- sitemap
+- canonical / Open Graph / Twitter metadata
+- reduced-motion and keyboard-friendly interaction patterns
+- local self-hosted assets
 
-Changes should be introduced incrementally so the original working baseline remains easy to compare and debug.
+Future work should continue incrementally so the verified Sketchbook behavior remains easy to compare and debug.
 
 ---
 
@@ -156,15 +201,30 @@ https://github.com/itssourov13/sketchbook.git
 Current branch:
 
 ```text
-main
+feature/personal-site-upgrade
 ```
+
+The branch is intentionally separate from `main`. No push is performed automatically.
 
 ---
 
-## 🗺️ Roadmap
+## 🗺️ Upgrade Progress
 
-The repository is currently at the **verified baseline stage**.
+The first 12 upgrade phases are complete on the dedicated feature branch:
 
-Next phase: customize the experience to our own requirements while preserving the strong parts of the original interaction system.
+```text
+[x] Phase 1  — Astro + TypeScript foundation
+[x] Phase 2  — Reusable Sketchbook extraction
+[x] Phase 3  — Global design system + site chrome
+[x] Phase 4  — Typed Work + Journal content system
+[x] Phase 5  — Personal homepage
+[x] Phase 6  — About + configurable identity
+[x] Phase 7  — Case-study navigation / showcase polish
+[x] Phase 8  — Journal reading experience
+[x] Phase 9  — SEO + RSS + sitemap
+[x] Phase 10 — Performance pass
+[x] Phase 11 — Accessibility / reduced motion pass
+[x] Phase 12 — Production QA
+```
 
-> **Baseline first. Customize second. Refine continuously.**
+Next direction: richer case-study media, search/filtering, responsive image formats, analytics, deployment automation, and additional interactive experiments.
