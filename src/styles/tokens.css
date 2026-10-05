@@ -1,0 +1,16 @@
+:root {
+  --paper: #ece7dc;
+  --ink: #2b2721;
+  --ink-soft: rgba(43, 39, 33, 0.58);
+  --ink-faint: rgba(43, 39, 33, 0.36);
+  --hairline: rgba(43, 39, 33, 0.14);
+  --earth: #9a6a3e;
+  --display: 'Instrument Serif', Georgia, serif;
+  --font: 'Newsreader', Georgia, serif;
+  --content-width: 1080px;
+  --page-gutter: clamp(20px, 5vw, 48px);
+  --motion-fast: 180ms;
+  --motion-base: 320ms;
+  --motion-slow: 700ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}

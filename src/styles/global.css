@@ -1,0 +1,12 @@
+@import './tokens.css';
+
+html { background: var(--paper); }
+body { margin: 0; }
+*, *::before, *::after { box-sizing: border-box; }
+:focus-visible { outline: 2px solid var(--earth); outline-offset: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+  }
+}

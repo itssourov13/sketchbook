@@ -4,11 +4,17 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "astro check && astro build",
+    "check": "astro check",
+    "preview": "astro preview --host 0.0.0.0"
   },
   "devDependencies": {
     "vite": "latest"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.10",
+    "astro": "^7.3.5",
+    "typescript": "^6.0.3"
   }
 }
