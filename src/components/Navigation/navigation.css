@@ -20,3 +20,8 @@
   .site-link { justify-content: space-between; min-height: 44px; }
   .site-experience-link { justify-content: center; min-height: 44px; }
 }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .site-link, .site-experience-link { transition: none; }
+}

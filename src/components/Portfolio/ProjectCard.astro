@@ -13,9 +13,9 @@ const { title, description, year, type, href, image, featured = false, stack = [
 ---
 
 <article class:list={["project-card", { featured }]}>
-  <a class="project-card-link" href={href}>
+  <a class="project-card-link" href={href} aria-label={`Open ${title} project`}>
     <div class="project-card-media" aria-hidden="true">
-      {image ? <img src={image} alt="" loading="lazy" decoding="async" /> : <div class="project-card-placeholder"></div>}
+      {image ? <img src={image} alt={title} loading="lazy" decoding="async" /> : <div class="project-card-placeholder"></div>}
       <span class="project-card-index">{String(year).slice(-2)}</span>
     </div>
     <div class="project-card-body">

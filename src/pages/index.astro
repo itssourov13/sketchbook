@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Sketchbook from '../components/sketchbook/Sketchbook.astro';
 import ProjectCard from '../components/Portfolio/ProjectCard.astro';
 import ArticleCard from '../components/Portfolio/ArticleCard.astro';
+import { site } from '../data/site';
 import '../components/Portfolio/portfolio.css';
 
 const projects = (await getCollection('projects', ({ data }) => data.status === 'published' && data.featured))
@@ -80,7 +81,7 @@ const posts = (await getCollection('journal', ({ data }) => data.status === 'pub
     <section class="home-contact" aria-labelledby="contact-title">
       <p class="eyebrow">Let’s build something useful</p>
       <h2 id="contact-title">Have a hard problem<br /><em>or a strange idea?</em></h2>
-      <a class="contact-link" href="mailto:hello@example.com">hello@example.com ↗</a>
+      <a class="contact-link" href={site.github} rel="noreferrer">GitHub / {site.name} ↗</a>
     </section>
   </main>
 </BaseLayout>

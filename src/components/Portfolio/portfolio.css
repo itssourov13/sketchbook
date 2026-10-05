@@ -24,3 +24,9 @@
 .article-card-arrow { justify-self: end; color: var(--ink); font-size: 13px; }
 @media (max-width: 820px) { .work-grid { grid-template-columns: 1fr; } .article-card-link { grid-template-columns: 90px minmax(0,1fr); } .article-card-cover { grid-column: 2; grid-row: 2; height: 180px; } .article-card-arrow { justify-self: start; grid-column: 2; } }
 @media (max-width: 560px) { .project-card-media { min-height: 300px; } .article-card-link { grid-template-columns: 1fr; } .article-card-cover, .article-card-arrow { grid-column: auto; grid-row: auto; } }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card-media img { transition: none; }
+  .project-card-link:hover .project-card-media img { transform: none; }
+}
