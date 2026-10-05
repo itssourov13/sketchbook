@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SiteNav from '../components/Navigation/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import { site } from '../data/site';
 
 interface Props {
   title?: string;
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const {
-  title = 'Sketchbook',
+  title = `${site.name} — personal site`,
   description = 'An interactive editorial portfolio experience.',
   chrome = true,
 } = Astro.props;

@@ -1,4 +1,6 @@
 ---
+import { site } from '../../data/site';
+
 const links = [
   { href: '/', label: 'Home' },
   { href: '/work/', label: 'Work' },
@@ -10,7 +12,7 @@ const currentPath = Astro.url.pathname;
 
 <header class="site-nav-wrap">
   <nav class="site-nav" aria-label="Primary navigation">
-    <a class="site-brand" href="/" aria-label="Samir — home">SAMIR</a>
+    <a class="site-brand" href="/" aria-label={`${site.name} — home`}>{site.name.toUpperCase()}</a>
 
     <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
       <span>Menu</span>
@@ -24,7 +26,7 @@ const currentPath = Astro.url.pathname;
           return <a class:list={["site-link", { active }]} href={link.href} aria-current={active ? 'page' : undefined}>{link.label}</a>;
         })}
       </div>
-      <a class="site-experience-link" href="/sketchbook/">Sketchbook ↗</a>
+      <a class="site-experience-link" href={site.sketchbookPath}>Sketchbook ↗</a>
     </div>
   </nav>
 </header>

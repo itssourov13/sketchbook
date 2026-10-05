@@ -1,3 +1,7 @@
+---
+import { site } from '../data/site';
+---
+
 <footer class="site-footer">
   <div class="footer-grid">
     <div>
@@ -9,11 +13,11 @@
       <a href="/journal/">Journal</a>
       <a href="/about/">About</a>
       <a href="/sketchbook/">Sketchbook ↗</a>
-      <a href="mailto:hello@example.com">Email ↗</a>
+      <a href={site.github} rel="noreferrer">GitHub ↗</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© {new Date().getFullYear()} Samir</span>
+    <span>© {site.currentYear} {site.name}</span>
     <span>Designed as an evolving personal workspace.</span>
   </div>
 </footer>

@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout title={`About — ${site.name}`} description={`${site.name}: cybersecurity, software, research, and creative engineering.`}>
+  <main id="main-content" class="about-page">
+    <section class="about-hero">
+      <p class="eyebrow">About / {site.location}</p>
+      <h1>A curious mind<br /><em>with a security lens.</em></h1>
+      <p class="about-lede">{site.shortBio} I enjoy moving between deep technical work and clear, human-facing experiences.</p>
+    </section>
+
+    <section class="about-split">
+      <div class="section-label">01 / What I work on</div>
+      <div class="about-copy">
+        <p>My work sits across offensive and defensive security research, software development, reverse engineering, automation, and web engineering.</p>
+        <p>I am especially interested in systems where the technical details matter: understanding how things work, finding where they fail, and building tools or interfaces that make those systems easier to reason about.</p>
+      </div>
+    </section>
+
+    <section class="about-split">
+      <div class="section-label">02 / Working principles</div>
+      <div class="principles">
+        <article><span>01</span><h2>Understand first.</h2><p>Good implementation starts with knowing what the system is actually doing, not what the diagram says it should do.</p></article>
+        <article><span>02</span><h2>Make complexity legible.</h2><p>The strongest technical work is easier to trust when its results, constraints, and trade-offs are visible.</p></article>
+        <article><span>03</span><h2>Keep experimenting.</h2><p>Research and creative engineering both improve when prototypes are cheap, reversible, and tested against reality.</p></article>
+      </div>
+    </section>
+
+    <section class="about-focus">
+      <p class="eyebrow">03 / Focus areas</p>
+      <div class="focus-grid">
+        <span>Cybersecurity research</span><span>Penetration testing</span><span>Reverse engineering</span><span>Automation</span><span>Software engineering</span><span>Interactive web</span><span>Technical writing</span><span>Security tooling</span>
+      </div>
+    </section>
+
+    <section class="about-contact">
+      <p class="eyebrow">04 / Elsewhere</p>
+      <h2>Continue the conversation.</h2>
+      <p>Projects live on GitHub; technical notes and experiments live here.</p>
+      <a href={site.github} class="contact-link" rel="noreferrer">GitHub / {site.name} ↗</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+.about-page { max-width: 1180px; margin: 0 auto; padding: 150px clamp(20px,5vw,48px) 100px; }
+.eyebrow, .section-label { color: var(--ink-faint); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+.about-hero { max-width: 940px; padding: 80px 0 130px; }
+.about-hero h1 { margin: 18px 0 30px; font: 400 clamp(64px,11vw,150px)/.84 var(--display); letter-spacing: -.04em; }
+.about-hero h1 em { color: var(--earth); }
+.about-lede { max-width: 58ch; color: var(--ink-soft); font-size: clamp(19px,2vw,24px); line-height: 1.55; }
+.about-split { display: grid; grid-template-columns: 240px minmax(0,1fr); gap: 40px; padding: 40px 0 100px; border-top: 1px solid var(--hairline); }
+.about-copy { max-width: 68ch; font-size: 20px; line-height: 1.72; color: var(--ink-soft); }
+.about-copy p:first-child { margin-top: 0; }
+.principles { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+.principles article { padding-top: 8px; }
+.principles span { color: var(--earth); font-size: 11px; }
+.principles h2 { margin: 18px 0 10px; font: 400 34px/.95 var(--display); }
+.principles p { margin: 0; color: var(--ink-soft); line-height: 1.6; }
+.about-focus { padding: 40px 0 100px; }
+.focus-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); margin-top: 22px; border-top: 1px solid var(--hairline); }
+.focus-grid span { padding: 14px 0; border-bottom: 1px solid var(--hairline); color: var(--ink-soft); font-size: 13px; }
+.about-contact { padding: 90px 0; border-block: 1px solid var(--hairline); text-align: center; }
+.about-contact h2 { margin: 12px 0; font: 400 clamp(52px,8vw,96px)/.9 var(--display); letter-spacing: -.035em; }
+.about-contact p { color: var(--ink-soft); }
+.contact-link { display: inline-block; margin-top: 16px; color: var(--ink); text-decoration: underline; text-underline-offset: 6px; font-size: 18px; }
+@media (max-width:800px) { .about-split { grid-template-columns: 1fr; gap: 20px; } .principles { grid-template-columns: 1fr; } .focus-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+</style>
