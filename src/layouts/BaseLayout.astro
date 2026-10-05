@@ -1,14 +1,18 @@
 ---
 import '../styles/global.css';
+import SiteNav from '../components/Navigation/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 
 interface Props {
   title?: string;
   description?: string;
+  chrome?: boolean;
 }
 
 const {
   title = 'Sketchbook',
   description = 'An interactive editorial portfolio experience.',
+  chrome = true,
 } = Astro.props;
 ---
 
@@ -21,8 +25,10 @@ const {
     <meta name="theme-color" content="#ece7dc" />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="site-body">
     <a class="skip-link" href="#main-content">Skip to content</a>
+    {chrome && <SiteNav />}
     <slot />
+    {chrome && <SiteFooter />}
   </body>
 </html>

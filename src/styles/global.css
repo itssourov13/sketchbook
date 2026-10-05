@@ -1,6 +1,11 @@
 @import './tokens.css';
+@import '../components/Navigation/navigation.css';
 
-html { background: var(--paper); }
+@font-face { font-family: 'Instrument Serif'; src: url('/assets/instrument-serif.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Instrument Serif'; src: url('/assets/instrument-serif-italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Newsreader'; src: url('/assets/newsreader.woff2') format('woff2'); font-weight: 200 600; font-style: normal; font-display: swap; }
+
+html { background: var(--paper); scroll-behavior: smooth; }
 body { margin: 0; }
 *, *::before, *::after { box-sizing: border-box; }
 :focus-visible { outline: 2px solid var(--earth); outline-offset: 4px; }
@@ -10,3 +15,9 @@ body { margin: 0; }
     scroll-behavior: auto !important;
   }
 }
+
+.site-body { min-height: 100vh; color: var(--ink); background: var(--paper); font-family: var(--font); }
+.skip-link { position: fixed; left: 14px; top: 14px; z-index: 200; transform: translateY(-180%); padding: 10px 14px; border-radius: 999px; color: var(--paper); background: var(--ink); text-decoration: none; }
+.skip-link:focus { transform: translateY(0); }
+::selection { color: var(--paper); background: var(--ink); }
+body[data-menu-open] { overflow: hidden; }

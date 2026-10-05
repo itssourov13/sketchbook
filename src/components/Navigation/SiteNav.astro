@@ -1,0 +1,58 @@
+---
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/work/', label: 'Work' },
+  { href: '/journal/', label: 'Journal' },
+  { href: '/about/', label: 'About' },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-nav-wrap">
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-brand" href="/" aria-label="Samir — home">SAMIR</a>
+
+    <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+      <span>Menu</span>
+      <span aria-hidden="true" class="menu-icon"><i></i><i></i></span>
+    </button>
+
+    <div class="site-menu" id="site-menu" data-menu-panel>
+      <div class="site-links">
+        {links.map((link) => {
+          const active = link.href === '/' ? currentPath === '/' : currentPath.startsWith(link.href);
+          return <a class:list={["site-link", { active }]} href={link.href} aria-current={active ? 'page' : undefined}>{link.label}</a>;
+        })}
+      </div>
+      <a class="site-experience-link" href="/sketchbook/">Sketchbook ↗</a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector('[data-menu-toggle]');
+  const panel = document.querySelector('[data-menu-panel]');
+  if (toggle instanceof HTMLButtonElement && panel instanceof HTMLElement) {
+    const close = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      panel.removeAttribute('data-open');
+      document.body.removeAttribute('data-menu-open');
+    };
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      if (open) close();
+      else {
+        toggle.setAttribute('aria-expanded', 'true');
+        panel.setAttribute('data-open', '');
+        document.body.setAttribute('data-menu-open', '');
+      }
+    });
+    panel.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') close(); });
+    document.addEventListener('click', (event) => {
+      if (!document.body.hasAttribute('data-menu-open')) return;
+      const target = event.target;
+      if (target instanceof Node && !panel.contains(target) && !toggle.contains(target)) close();
+    });
+  }
+</script>
