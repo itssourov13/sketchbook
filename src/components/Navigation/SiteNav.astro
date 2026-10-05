@@ -26,8 +26,11 @@ const currentPath = Astro.url.pathname;
           return <a class:list={["site-link", { active }]} href={link.href} aria-current={active ? 'page' : undefined}>{link.label}</a>;
         })}
       </div>
-      <a class="site-experience-link" href={site.sketchbookPath}>Sketchbook ↗</a>
     </div>
+
+    <a class="site-experience-link" href={site.sketchbookPath} aria-label="Open interactive Sketchbook">
+      Sketchbook <span aria-hidden="true">↗</span>
+    </a>
   </nav>
 </header>
 
