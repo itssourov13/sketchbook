@@ -6,7 +6,7 @@ interface Props {
   kicker?: string;
 }
 
-const { mode = 'full', kicker = 'Interactive sketchbook / visual archive' } = Astro.props;
+const { mode = 'full', kicker = 'A quiet visual sketchbook' } = Astro.props;
 ---
 
 <div class="wash" aria-hidden="true"></div>
@@ -76,7 +76,7 @@ const { mode = 'full', kicker = 'Interactive sketchbook / visual archive' } = As
   <section id="about" class="about">
     <div>
       <p class="section-label">About</p>
-      <p class="bio">A tactile visual archive built around paper, motion, and close observation. The Sketchbook interaction is preserved as a signature portfolio experience, then separated from the rest of the site so the same system can evolve into project showcases, research notes, and future visual experiments.</p>
+      <p class="bio">A tactile corner of the site built around paper, motion, and close looking. The sketchbook sits beside the writing as another way of paying attention: slower, visual, and open-ended.</p>
     </div>
     <img crossorigin="anonymous" class="bloom" src="/assets/bloom.png" alt="" aria-hidden="true">
   </section>
@@ -89,7 +89,7 @@ const { mode = 'full', kicker = 'Interactive sketchbook / visual archive' } = As
   </section>
 
   <div class="rule short" aria-hidden="true"></div>
-  <p class="foot" id="contact">Sourov · Interactive Sketchbook · <a href="/" class="bio-link">Back to home</a> · Original reference: ThreeUI / Meng To</p>
+  <p class="foot" id="contact">Sourov · Sketchbook · <a href="/" class="bio-link">Back to home</a> · Original reference: ThreeUI / Meng To</p>
 </main>
 
 <script src="./sketchbook.js"></script>

@@ -1,9 +1,9 @@
 ---
-title: Content-First Personal Site
-description: A structured foundation for portfolio work, technical notes, and long-form journal entries.
+title: A Small Room for Words
+description: "The quiet structure behind a site for poems, notes, fragments, and longer pieces of writing."
 year: 2026
-role: Site architecture / frontend systems
-type: Personal website
+role: Site composition / editorial structure
+type: Writing space
 featured: true
 status: published
 stack:
@@ -17,16 +17,16 @@ accent: '#6d5944'
 
 ## The idea
 
-A personal site should make adding the next project or article cheaper than redesigning the page around it.
+A writing site should make the next piece easier to place than the last redesign. The structure stays quiet so the words can stay visible.
 
-The architecture therefore separates presentation from content: project entries describe the work, journal entries describe the writing, and shared layouts decide how those entries are presented.
+Poems, notes, fragments, and longer pieces each get their own room, while the shared pages keep the whole place feeling like one book rather than a stack of unrelated screens.
 
 ## The system
 
-Projects and journal posts are typed collections with shared schemas. Routes are generated from the collection entries, while cards and detail layouts stay reusable.
+Each piece lives as its own entry, with a title, a little context, and a place in the larger archive. The pages that present them stay reusable, so adding something new does not require rebuilding the room around it.
 
-This makes the site practical as a living archive instead of a single polished homepage.
+That keeps the site closer to a living notebook than a single polished homepage.
 
 ## The next layer
 
-The same content model can later drive search, tags, RSS, related posts, case-study navigation, and richer media without rebuilding the information architecture.
+As the archive grows, the room can grow with it: more sections, longer pieces, images, collections, and quiet ways to return to something you once read. The aim is simple—make it easy for the next sentence to find a home.

@@ -16,38 +16,38 @@ const posts = (await getCollection('journal', ({ data }) => data.status === 'pub
 ---
 
 <BaseLayout
-  title={`${site.name} — Cybersecurity, Software & Creative Engineering`}
-  description={`The personal workspace of ${site.name}: cybersecurity, software engineering, research, interactive web experiments, and writing.`}
+  title={`${site.name} — Poems, Prose & Quiet Things`}
+  description={`Poems, fragments, prose, and a visual sketchbook by ${site.name}.`}
 >
   <main id="main-content" class="home-page">
     <section class="personal-hero">
       <div class="personal-hero-top">
-        <p class="eyebrow">Bangladesh · Cybersecurity · Software · Creative Engineering</p>
+        <p class="eyebrow">Bangladesh · Writing · Poetry · Prose</p>
         <span class="hero-year">2026 / now</span>
       </div>
-      <h1>Build systems.<br /><em>Tell better stories.</em></h1>
+      <h1>Some words are meant.<br /><em>to linger.</em></h1>
       <div class="personal-hero-bottom">
-        <p>A technical mind exploring security, software, research, and the expressive side of the web.</p>
-        <a class="text-link" href="/work/">Explore the work ↗</a>
+        <p>I write toward the small things: a passing image, a remembered room, a sentence that refuses to leave. This is a place for poems, fragments, and the space between them.</p>
+        <a class="text-link" href="/work/">Enter the writing ↗</a>
       </div>
     </section>
 
     <section class="signature-section" aria-labelledby="signature-title">
       <div class="section-heading-block">
-        <p class="eyebrow">Signature experience</p>
-        <h2 id="signature-title">A sketchbook<br /><em>for the curious.</em></h2>
-        <p>One tactile interaction, kept intentionally simple: turn the page, inspect the detail, and stay curious.</p>
+        <p class="eyebrow">A page to pause on</p>
+        <h2 id="signature-title">A sketchbook<br /><em>for looking twice.</em></h2>
+        <p>The pages turn slowly here—a visual pause beside the writing. Look closely, turn one more page, and let the small details take their time.</p>
       </div>
       <div class="signature-frame">
-        <Sketchbook mode="hero" kicker="Interactive sketchbook / personal showcase" />
+        <Sketchbook mode="hero" kicker="Quiet pages / visual study" />
       </div>
-      <div class="signature-caption"><span>Explore the full experience</span><a class="text-link" href="/sketchbook/">Open Sketchbook ↗</a></div>
+      <div class="signature-caption"><span>Turn a page, stay awhile.</span><a class="text-link" href="/sketchbook/">Open the sketchbook ↗</a></div>
     </section>
 
     <section class="content-section home-work" aria-labelledby="featured-work-title">
       <div class="section-heading">
-        <div><p class="eyebrow">01 / Selected work</p><h2 id="featured-work-title">Featured projects</h2></div>
-        <a class="text-link" href="/work/">View all work ↗</a>
+        <div><p class="eyebrow">01 / Recent pieces</p><h2 id="featured-work-title">Recent writing</h2></div>
+        <a class="text-link" href="/work/">Read everything ↗</a>
       </div>
       <div class="work-grid">
         {projects.map((project) => <ProjectCard {...project.data} href={`/work/${project.id}/`} />)}
@@ -56,8 +56,8 @@ const posts = (await getCollection('journal', ({ data }) => data.status === 'pub
 
     <section class="content-section home-journal" aria-labelledby="journal-title">
       <div class="section-heading">
-        <div><p class="eyebrow">02 / Journal</p><h2 id="journal-title">Notes from the workbench</h2></div>
-        <a class="text-link" href="/journal/">Read the journal ↗</a>
+        <div><p class="eyebrow">02 / Notes</p><h2 id="journal-title">Notes, fragments, things kept</h2></div>
+        <a class="text-link" href="/journal/">All notes ↗</a>
       </div>
       <div class="article-grid">
         {posts.map((post) => <ArticleCard {...post.data} href={`/journal/${post.id}/`} />)}
@@ -66,22 +66,22 @@ const posts = (await getCollection('journal', ({ data }) => data.status === 'pub
 
     <section class="home-about content-section" aria-labelledby="about-title">
       <div class="about-statement">
-        <p class="eyebrow">03 / About</p>
-        <h2 id="about-title">Security-minded.<br /><em>Curious by default.</em></h2>
+        <p class="eyebrow">03 / A little about this place</p>
+        <h2 id="about-title">A room for words.<br /><em>Nothing louder than that.</em></h2>
       </div>
       <div class="about-copy">
-        <p>I work across cybersecurity, software development, research, and technical problem-solving. I like systems that are precise underneath and understandable on the surface.</p>
+        <p>I wanted a corner of the internet where a poem could sit beside a photograph, a fragment beside a longer thought, without having to become anything else. So this site is kept deliberately open: part notebook, part archive, part room to return to.</p>
         <div class="capability-grid">
-          <span>Security research</span><span>Web engineering</span><span>Automation</span><span>Reverse engineering</span><span>Interactive UI</span><span>Technical writing</span>
+          <span>Poems</span><span>Prose</span><span>Fragments</span><span>Observations</span><span>Images & memory</span><span>Sketchbook</span>
         </div>
-        <a class="text-link" href="/about/">More about me ↗</a>
+        <a class="text-link" href="/about/">Read the note ↗</a>
       </div>
     </section>
 
     <section class="home-contact" aria-labelledby="contact-title">
-      <p class="eyebrow">Let’s build something useful</p>
-      <h2 id="contact-title">Have a hard problem<br /><em>or a strange idea?</em></h2>
-      <a class="contact-link" href={site.github} rel="noreferrer">GitHub / {site.name} ↗</a>
+      <p class="eyebrow">Come back later</p>
+      <h2 id="contact-title">There is always<br /><em>another page.</em></h2>
+      <a class="contact-link" href={site.github} rel="noreferrer">Find me elsewhere ↗</a>
     </section>
   </main>
 </BaseLayout>

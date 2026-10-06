@@ -3,43 +3,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
 ---
 
-<BaseLayout title={`About — ${site.name}`} description={`${site.name}: cybersecurity, software, research, and creative engineering.`}>
+<BaseLayout title={`About — ${site.name}`} description={`A small introduction to ${site.name}, and to the writing gathered here.`}>
   <main id="main-content" class="about-page">
     <section class="about-hero">
-      <p class="eyebrow">About / {site.location}</p>
-      <h1>A curious mind<br /><em>with a security lens.</em></h1>
-      <p class="about-lede">{site.shortBio} I enjoy moving between deep technical work and clear, human-facing experiences.</p>
+      <p class="eyebrow">About / a note</p>
+      <h1>A place for words<br /><em>to arrive quietly.</em></h1>
+      <p class="about-lede">{site.shortBio} This is not much of a biography; it is more like a shelf—some things I have written, noticed, kept, and returned to.</p>
     </section>
 
     <section class="about-split">
-      <div class="section-label">01 / What I work on</div>
+      <div class="section-label">01 / Why this place exists</div>
       <div class="about-copy">
-        <p>My work sits across offensive and defensive security research, software development, reverse engineering, automation, and web engineering.</p>
-        <p>I am especially interested in systems where the technical details matter: understanding how things work, finding where they fail, and building tools or interfaces that make those systems easier to reason about.</p>
+        <p>I wanted somewhere words could remain without needing to become announcements. A poem can be unfinished. A fragment can stay small. A thought can take its time.</p>
+        <p>The site is built around that pace: pages for writing, notes for what is still unfolding, and a sketchbook for the visual things that belong beside the words.</p>
       </div>
     </section>
 
     <section class="about-split">
-      <div class="section-label">02 / Working principles</div>
+      <div class="section-label">02 / A few ways of looking</div>
       <div class="principles">
-        <article><span>01</span><h2>Understand first.</h2><p>Good implementation starts with knowing what the system is actually doing, not what the diagram says it should do.</p></article>
-        <article><span>02</span><h2>Make complexity legible.</h2><p>The strongest technical work is easier to trust when its results, constraints, and trade-offs are visible.</p></article>
-        <article><span>03</span><h2>Keep experimenting.</h2><p>Research and creative engineering both improve when prototypes are cheap, reversible, and tested against reality.</p></article>
+        <article><span>01</span><h2>Leave room.</h2><p>A sentence does not always need to explain itself. Sometimes the space around it is part of the meaning.</p></article>
+        <article><span>02</span><h2>Look closely.</h2><p>Small details carry their own weather: a gesture, a room at dusk, the sound of something almost remembered.</p></article>
+        <article><span>03</span><h2>Read twice.</h2><p>The pieces I like most are the ones that change a little when you return to them.</p></article>
       </div>
     </section>
 
     <section class="about-focus">
-      <p class="eyebrow">03 / Focus areas</p>
+      <p class="eyebrow">03 / Things I return to</p>
       <div class="focus-grid">
-        <span>Cybersecurity research</span><span>Penetration testing</span><span>Reverse engineering</span><span>Automation</span><span>Software engineering</span><span>Interactive web</span><span>Technical writing</span><span>Security tooling</span>
+        <span>Poetry</span><span>Prose</span><span>Fragments</span><span>Memory</span><span>Images</span><span>Silence</span><span>Places</span><span>Notes</span>
       </div>
     </section>
 
     <section class="about-contact">
       <p class="eyebrow">04 / Elsewhere</p>
-      <h2>Continue the conversation.</h2>
-      <p>Projects live on GitHub; technical notes and experiments live here.</p>
-      <a href={site.github} class="contact-link" rel="noreferrer">GitHub / {site.name} ↗</a>
+      <h2>Take a page with you.</h2>
+      <p>Everything here is meant to be read slowly. The sketchbook is open, and the writing keeps arriving.</p>
+      <a href={site.github} class="contact-link" rel="noreferrer">Find me elsewhere ↗</a>
     </section>
   </main>
 </BaseLayout>

@@ -9,16 +9,16 @@ const projects = (await getCollection('projects', ({ data }) => data.status === 
   .sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title));
 ---
 
-<BaseLayout title={`Work — ${site.name}`} description={`Selected projects, experiments, and engineering work by ${site.name}.`}>
+<BaseLayout title={`Writing — ${site.name}`} description="Poems, prose, fragments, and small pieces gathered in one place.">
   <main id="main-content" class="content-page">
     <section class="content-hero">
-      <p class="eyebrow">Selected work</p>
-      <h1>Things I build<br /><em>and keep learning from.</em></h1>
-      <p class="content-intro">A growing collection of interactive web experiments, engineering systems, and projects where design meets code.</p>
+      <p class="eyebrow">Writing</p>
+      <h1>Things I leave<br /><em>on the page.</em></h1>
+      <p class="content-intro">Some pieces arrive as poems, some as fragments, some as notes that grow longer than expected. This is the shelf for all of them.</p>
     </section>
 
     <section class="content-section" aria-labelledby="work-list-title">
-      <div class="section-heading"><p class="eyebrow">01 / Projects</p><h2 id="work-list-title">Work</h2></div>
+      <div class="section-heading"><p class="eyebrow">01 / Pages</p><h2 id="work-list-title">Writing</h2></div>
       <div class="work-grid">
         {projects.map((project) => <ProjectCard {...project.data} href={`/work/${project.id}/`} />)}
       </div>

@@ -8,7 +8,7 @@ export async function GET() {
 
   return rss({
     title: `${site.name} — Journal`,
-    description: 'Technical notes, design decisions, experiments, and lessons from the workbench.',
+    description: 'Notes, fragments, and reflections collected alongside the writing.',
     site: import.meta.env.PUBLIC_SITE_URL || 'https://example.com',
     items: posts.map((post) => ({
       title: post.data.title,
