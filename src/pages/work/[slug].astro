@@ -19,13 +19,13 @@ const nextProject = position >= 0 && position < allProjects.length - 1 ? allProj
 <BaseLayout title={`${entry.data.title} — ${site.name}`} description={entry.data.description}>
   <main id="main-content" class="case-page">
     <header class="case-hero">
-      <a class="back-link" href="/work/">← All work</a>
+      <a class="back-link" href="/work/">← All writing</a>
       <p class="eyebrow">{entry.data.type} · {entry.data.year}</p>
       <h1>{entry.data.title}</h1>
       <p class="case-deck">{entry.data.description}</p>
       <div class="case-meta">
-        <span><strong>Role</strong>{entry.data.role}</span>
-        <span><strong>Stack</strong>{entry.data.stack.join(' · ')}</span>
+        <span><strong>Form</strong>{entry.data.role}</span>
+        <span><strong>Materials</strong>{entry.data.stack.join(' · ')}</span>
       </div>
     </header>
 
@@ -37,15 +37,15 @@ const nextProject = position >= 0 && position < allProjects.length - 1 ? allProj
 
     {entry.id === 'sketchbook-engine' && (
       <aside class="source-credit" aria-label="Source credit">
-        <span>Original reference</span>
+        <span>A note on the reference</span>
         <p>This interaction is based on the public ThreeUI “Meng To — Sketchbook” experience. ThreeUI remains credited in the project README and documentation. The site does not present the original creator’s personal identity as the site owner.</p>
         <a href="https://threeui.com/landing-pages/meng-to-sketchbook.html" rel="noreferrer">View original reference ↗</a>
       </aside>
     )}
 
-    <nav class="project-pager" aria-label="Project navigation">
-      {previousProject ? <a href={`/work/${previousProject.id}/`}><span>Previous</span><strong>{previousProject.data.title}</strong></a> : <span></span>}
-      {nextProject ? <a class="next" href={`/work/${nextProject.id}/`}><span>Next</span><strong>{nextProject.data.title}</strong></a> : <span></span>}
+    <nav class="project-pager" aria-label="Writing navigation">
+      {previousProject ? <a href={`/work/${previousProject.id}/`}><span>Earlier</span><strong>{previousProject.data.title}</strong></a> : <span></span>}
+      {nextProject ? <a class="next" href={`/work/${nextProject.id}/`}><span>Later</span><strong>{nextProject.data.title}</strong></a> : <span></span>}
     </nav>
   </main>
 </BaseLayout>

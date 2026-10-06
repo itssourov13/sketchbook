@@ -1,39 +1,37 @@
 ---
-title: From a Landing Page to a Site System
-description: What changed when a highly interactive demo became the foundation for a real portfolio, blog, and showcase.
+title: When a Landing Page Becomes a Room
+description: "What changes when a beautiful interactive page has to become a place where writing can stay."
 pubDate: 2026-10-05
-category: Building in public
+category: Making the site
 tags:
-  - Astro
+  - writing
+  - sketchbook
   - architecture
-  - portfolio
-  - frontend
+  - atmosphere
 featured: true
 status: published
 cover: /assets/botanic-gardens.png
 readingTime: 5 min
 ---
 
-A beautiful landing page is easy to keep beautiful when it has only one job.
+A beautiful landing page can afford to be loud when it has only one job. A place for writing needs something different: enough shape to feel like a place, and enough quiet that the words can stay in the foreground.
 
-A personal site has more jobs: introduce a person, show work, publish ideas, explain projects, make the next action obvious, and keep doing all of that as the content grows.
+The first decision here was not to redesign the sketchbook. It was to let it become one room in a larger house.
 
-The first architectural decision here was therefore not to redesign the Sketchbook interaction. It was to stop making the interaction responsible for the entire website.
+## Keep the page
 
-## Preserve the memorable part
+The sketchbook is the most tactile part of the site. It communicates mood before a reader reaches for a sentence: paper, movement, a little patience.
 
-The page-turning sketchbook is the signature. It has a real reason to exist: it communicates craft, curiosity, and attention before a visitor reads a long paragraph.
+So it stays. The interaction simply gets its own room, leaving the writing pages free to be calm and direct.
 
-Instead of replacing it, the experience was isolated as a reusable component. That lets the rest of the site stay conventional where conventional structure helps.
+## Give the words a home
 
-## Give content a home
+A poem should not have to be rebuilt into a webpage every time it arrives. A fragment should be able to remain a fragment. Longer notes should have somewhere to stretch.
 
-Projects and articles are now treated as content, not hard-coded sections. A new entry should be a file with metadata and writing, not a copy-paste of a page template.
+That is why the writing is treated as the content first, with the page acting as its frame rather than its author.
 
-That sounds like a small distinction. Over time it becomes the difference between a portfolio that is easy to update and one that slowly turns into a pile of one-off pages.
+## Let the room stay quiet
 
-## Keep motion subordinate to meaning
+The site does not need every sentence to arrive with an effect. The sketchbook can move; the writing can breathe.
 
-The goal is not to make every section move. The goal is to give motion a hierarchy: signature interactions can be expressive, navigation can be subtle, and long-form content can remain calm enough to read.
-
-That balance is what lets an interactive portfolio become a place to publish, not just a visual demo.
+That contrast is the point. A little motion makes the stillness more noticeable, and the stillness gives the words somewhere to land.

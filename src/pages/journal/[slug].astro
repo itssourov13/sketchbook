@@ -23,7 +23,7 @@ const related = (await getCollection('journal', ({ data }) => data.status === 'p
 <BaseLayout title={`${entry.data.title} — Journal — ${site.name}`} description={entry.data.description}>
   <ReadingProgress />
   <main id="main-content" class="article-page">
-    <a class="back-link" href="/journal/">← Journal</a>
+    <a class="back-link" href="/journal/">← Notes</a>
     <header class="article-header">
       <p class="eyebrow">{entry.data.category} · {published}{entry.data.readingTime ? ` · ${entry.data.readingTime}` : ''}</p>
       <h1>{entry.data.title}</h1>
@@ -34,7 +34,7 @@ const related = (await getCollection('journal', ({ data }) => data.status === 'p
 
     {related.length > 0 && (
       <section class="related-section" aria-labelledby="related-title">
-        <div class="section-heading"><div><p class="eyebrow">Keep reading</p><h2 id="related-title">Related notes</h2></div></div>
+        <div class="section-heading"><div><p class="eyebrow">Stay a little longer</p><h2 id="related-title">More to read</h2></div></div>
         <div class="article-grid">
           {related.map((post) => <ArticleCard {...post.data} href={`/journal/${post.id}/`} />)}
         </div>

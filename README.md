@@ -1,28 +1,29 @@
-# Sketchbook — Personal Portfolio / Journal Foundation
+# Sketchbook — A Small Room for Words
 
-A personal website foundation built around an interactive, tactile sketchbook experience.
+A poetry-and-prose website built around a tactile visual sketchbook.
 
-The original **Meng To — Sketchbook** interaction from ThreeUI is preserved as the signature visual experience, but the project is no longer just a landing page. It now has a scalable Astro architecture for personal identity, portfolio projects, case studies, journal posts, SEO, and future interactive experiments.
+This project began with a page-turning sketchbook experience and grew into a quiet place for poems, prose, fragments, notes, images, and things that deserve to be read twice. The writing stays in the foreground; the interface is there to give it atmosphere without competing with it.
 
-> **Let the interaction create the first impression. Let the content carry the story.**
+> **Some words are meant to linger.**
 
 ---
 
-## ✦ Highlights
+## ✦ What lives here
 
-- Tactile **sketchbook / editorial** visual style
-- Realistic **curved page-turn** interaction
+- A tactile **page-turning sketchbook** as the visual signature
 - **Draggable magnifying glass** with live magnification
 - Smooth **zoom controls**
 - Subtle **pointer-based 3D tilt**
 - Keyboard navigation with **← / →**
 - Interactive **nine-plate index**
-- Responsive desktop/mobile layout
-- Localized assets for a **self-contained runtime**
-- Astro + TypeScript development and production build workflow
-- Typed Markdown content collections for projects and journal posts
+- Responsive desktop and mobile presentation
+- Localized images and fonts for a **self-contained runtime**
+- Astro + TypeScript build workflow
+- Typed Markdown content collections for writing and notes
 - Static output with RSS and sitemap generation
-- SEO-ready canonical and Open Graph metadata
+- Canonical, Open Graph, and Twitter metadata
+- Reduced-motion and keyboard-friendly interaction patterns
+- Vercel-ready deployment configuration
 
 ### Included Sketchbook Plates
 
@@ -43,23 +44,23 @@ The original **Meng To — Sketchbook** interaction from ThreeUI is preserved as
 ```text
 sketchbook/
 ├── astro.config.mjs          # Astro + sitemap configuration
+├── vercel.json               # Explicit Vercel deployment settings
 ├── public/
-│   └── assets/                # Local images + fonts
+│   └── assets/               # Local images + fonts
 ├── src/
-│   ├── components/            # Navigation, portfolio, journal, Sketchbook
-│   ├── data/                  # Site config + Markdown content
-│   ├── layouts/               # Shared page shell
-│   ├── pages/                 # Home, Work, Journal, About, Sketchbook, RSS
-│   ├── styles/                # Design tokens + global styles
-│   └── content.config.ts      # Typed content collections
+│   ├── components/           # Navigation, writing UI, Sketchbook
+│   ├── data/                 # Site configuration + Markdown content
+│   ├── layouts/              # Shared page shell
+│   ├── pages/                # Home, Writing, Notes, About, Sketchbook, RSS
+│   ├── styles/               # Design tokens + global styles
+│   └── content.config.ts     # Typed content collections
 ├── package.json
 ├── package-lock.json
 ├── tsconfig.json
-├── README.md
-└── dist/                      # Generated build output (git-ignored)
+└── README.md
 ```
 
-The implementation is mostly static by design. The Sketchbook interaction is isolated as a reusable component while projects and journal entries are content-driven.
+The implementation is intentionally mostly static. The Sketchbook interaction remains isolated as a reusable component, while the writing and notes are content-driven.
 
 ---
 
@@ -96,7 +97,7 @@ npm run build
 npm run preview
 ```
 
-### Production URL
+### Site URL
 
 Set `PUBLIC_SITE_URL` for deployment:
 
@@ -112,9 +113,9 @@ The value is used for canonical URLs, Open Graph URLs, RSS links, and the genera
 /
 /about/
 /work/
-/work/<project>/
+/work/<piece>/
 /journal/
-/journal/<article>/
+/journal/<note>/
 /sketchbook/
 /rss.xml
 /sitemap-index.xml
@@ -122,9 +123,43 @@ The value is used for canonical URLs, Open Graph URLs, RSS links, and the genera
 
 ---
 
+## ▲ Deploying to Vercel
+
+This project is a static Astro site, so it does not require the Astro Vercel adapter. Astro's current Vercel documentation describes static deployment as zero-configuration, while this repository includes an explicit `vercel.json` so the build and output settings are visible and reproducible.
+
+The repository configuration is:
+
+```json
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
+}
+```
+
+The documented Vercel configuration supports `framework`, `buildCommand`, and `outputDirectory` in `vercel.json`.
+
+### Git deployment
+
+Push the repository to GitHub, import it into Vercel, and Vercel will detect Astro and deploy the static build. Future pushes can then create Preview Deployments and Production Deployments according to the connected branch configuration.
+
+### CLI deployment
+
+From the project root:
+
+```bash
+npm install -g vercel
+vercel
+```
+
+Vercel can detect the Astro project automatically.
+
+---
+
 ## ✅ Verification
 
-The original source snapshot was inspected and compared against the live ThreeUI page before this workspace was assembled.
+The original Sketchbook source snapshot was inspected and compared against the live ThreeUI reference before the workspace was assembled.
 
 **Verified source**
 
@@ -146,33 +181,34 @@ The workspace contains **17 required local assets**, including:
 
 The assets were individually checked against the source manifest using byte count and SHA-256 verification.
 
-Runtime asset references were then localized to `/assets/*`, so the page does not depend on the original remote media hosts during normal local execution.
+Runtime asset references are localized to `/assets/*`, so the normal site does not depend on the original remote media hosts.
 
 ---
 
 ## 🎛️ Current Architecture
 
-The original interaction has been separated from the application shell so the same Sketchbook experience can be reused as a homepage hero or a dedicated `/sketchbook/` page.
+The original interaction is separated from the main application shell so the Sketchbook can be reused as a homepage hero or as the dedicated `/sketchbook/` page.
 
-The site now has:
+The site currently contains:
 
-- personal Home page
-- Work index + dynamic case studies
-- Journal index + dynamic articles
+- Home page centered on the writing
+- Writing index + individual pieces
+- Notes index + individual notes
 - About page
-- reusable navigation and footer
-- typed project/journal content collections
+- Reusable navigation and footer
+- Typed Markdown content collections
 - RSS feed
-- sitemap
-- canonical / Open Graph / Twitter metadata
-- reduced-motion and keyboard-friendly interaction patterns
-- local self-hosted assets
+- Sitemap
+- Canonical / Open Graph / Twitter metadata
+- Reduced-motion and keyboard-friendly interaction patterns
+- Local self-hosted assets
+- Explicit Vercel deployment configuration
 
 Future work should continue incrementally so the verified Sketchbook behavior remains easy to compare and debug.
 
 ---
 
-## 🙏 Special Thanks & Credit
+## ✦ Special Thanks & Credit
 
 ### ThreeUI
 
@@ -182,7 +218,7 @@ Original reference:
 
 **[ThreeUI — Meng To Sketchbook](https://threeui.com/landing-pages/meng-to-sketchbook.html)**
 
-The project is being used as a development baseline for further customization and experimentation. Original attribution is intentionally preserved here as part of the project documentation.
+The interaction is used here as a development baseline for further customization and experimentation. Original attribution is intentionally preserved in the project documentation.
 
 ### Meng To
 
@@ -198,33 +234,31 @@ Git remote:
 https://github.com/itssourov13/sketchbook.git
 ```
 
-Current branch:
+Development work is kept on dedicated branches before changes are merged into `main`.
 
-```text
-feature/personal-site-upgrade
-```
-
-The branch is intentionally separate from `main`. No push is performed automatically.
+No push is performed automatically.
 
 ---
 
 ## 🗺️ Upgrade Progress
 
-The first 12 upgrade phases are complete on the dedicated feature branch:
+The foundation and primary upgrade phases are complete:
 
 ```text
-[x] Phase 1  — Astro + TypeScript foundation
-[x] Phase 2  — Reusable Sketchbook extraction
-[x] Phase 3  — Global design system + site chrome
-[x] Phase 4  — Typed Work + Journal content system
-[x] Phase 5  — Personal homepage
-[x] Phase 6  — About + configurable identity
-[x] Phase 7  — Case-study navigation / showcase polish
-[x] Phase 8  — Journal reading experience
-[x] Phase 9  — SEO + RSS + sitemap
-[x] Phase 10 — Performance pass
-[x] Phase 11 — Accessibility / reduced motion pass
-[x] Phase 12 — Production QA
+[x] Astro + TypeScript foundation
+[x] Reusable Sketchbook extraction
+[x] Global design system + site chrome
+[x] Typed writing + notes content system
+[x] Personal homepage
+[x] About page
+[x] Case-study / writing navigation
+[x] Long-form reading experience
+[x] SEO + RSS + sitemap
+[x] Performance pass
+[x] Accessibility / reduced motion pass
+[x] Production QA
+[x] Poetic writer-focused copy pass
+[x] Vercel deployment configuration
 ```
 
-Next direction: richer case-study media, search/filtering, responsive image formats, analytics, deployment automation, and additional interactive experiments.
+Next direction: richer writing presentation, additional pieces, search/filtering, responsive image formats, analytics, and further visual experiments.

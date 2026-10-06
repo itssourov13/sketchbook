@@ -9,18 +9,18 @@ const posts = (await getCollection('journal', ({ data }) => data.status === 'pub
 const categories = [...new Set(posts.map((post) => post.data.category))];
 ---
 
-<BaseLayout title={`Journal — ${site.name}`} description={`Technical notes, design thinking, and build logs by ${site.name}.`}>
+<BaseLayout title={`Notes — ${site.name}`} description="Notes, fragments, and reflections collected alongside the writing.">
   <main id="main-content" class="content-page">
     <section class="content-hero">
-      <p class="eyebrow">Journal</p>
-      <h1>Notes from the<br /><em>workbench.</em></h1>
-      <p class="content-intro">Technical notes, design decisions, experiments, and lessons from building things that live between code and craft.</p>
+      <p class="eyebrow">Notes</p>
+      <h1>Notes for the<br /><em>in-between.</em></h1>
+      <p class="content-intro">Not every thought wants to become a poem. Some stay as notes, questions, images, or small records of a day.</p>
     </section>
 
-    <section class="journal-categories" aria-label="Journal categories">{categories.map((category) => <span>{category}</span>)}</section>
+    <section class="journal-categories" aria-label="Note categories">{categories.map((category) => <span>{category}</span>)}</section>
 
     <section class="content-section" aria-labelledby="journal-list-title">
-      <div class="section-heading"><p class="eyebrow">02 / Writing</p><h2 id="journal-list-title">Latest</h2></div>
+      <div class="section-heading"><p class="eyebrow">02 / Notes</p><h2 id="journal-list-title">Latest pieces</h2></div>
       <div class="article-grid">
         {posts.map((post) => <ArticleCard {...post.data} href={`/journal/${post.id}/`} />)}
       </div>
